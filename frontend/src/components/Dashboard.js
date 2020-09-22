@@ -1,5 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import SurveyList from "./surveys/SurveyList";
+const Dashboard = () => {
+  return (
+    <div>
+      Dashboard
+      <SurveyList />
+      <div className="fixed-action-btn">
+        <Link to="/surveys/new" class="btn-floating btn-large red">
+          <i className="large material-icons">add</i>
+        </Link>
+      </div>
+    </div>
+  );
+};
 
-export default function Dashboard() {
-  return <div>Surveys List</div>;
-}
+export default Dashboard;

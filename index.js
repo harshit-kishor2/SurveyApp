@@ -6,6 +6,7 @@ const cookieSession = require("cookie-session");
 const passport = require("passport");
 const keys = require("./config/keys");
 require("./models/User");
+require("./models/Survey");
 require("./services/passport");
 
 const port = process.env.PORT || 5000;
@@ -26,17 +27,9 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-app.get("/", (req, res) => {
-  res.send({
-    name: "harshit kishor",
-    email: "harshitkishor2@gmail.com",
-    age: 25,
-    hint: "for next page u can visit from this given link..",
-    link: "https://afternoon-thicket-97788.herokuapp.com/auth/google",
-  });
-});
 require("./routes/authRoutes")(app);
 require("./routes/billingRoutes")(app);
+require("./routes/surveyRoutes")(app);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("frontend/build"));
